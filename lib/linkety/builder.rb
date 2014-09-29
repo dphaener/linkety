@@ -36,7 +36,7 @@ module Linkety
         klasses << current_class if current_path == href_path
       end
         
-      t.link_to(text, url, options.merge(:class => klasses.join(' ')))
+      t.link_to(text, url, options.merge(:class => klasses.join(' ')), &block)
     end
     
     def current_link_to_if(truth, text, url, options = {})
