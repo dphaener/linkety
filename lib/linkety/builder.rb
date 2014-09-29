@@ -21,7 +21,10 @@ module Linkety
       t.link_to(text, url, options.merge(:class => klasses.join(' ')))
     end
     
-    def current_link_to(text, url, options = {})
+    def current_link_to(text, url, options = nil, &block)
+      text, url, options = block, text, url if block_given?
+      options ||= {}
+
       href_path = extract_path(url)
       current_class = options.delete(:current_class) || "current"
       klasses = (options.delete(:class) || "").split(' ')
